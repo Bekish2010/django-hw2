@@ -15,3 +15,15 @@ urlpatterns = [
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+from django.urls import path, include
+
+urlpatterns = [
+    path("api/users/", include("app.users.urls")),
+    path("api/car/", include("app.car.urls")),
+    path("api/auth/", include("dj_rest_auth.urls")),
+    path("api/auth/registration/", include("dj_rest_auth.registration.urls")),
+    path("api/auth/google/", include("allauth.socialaccount.urls")),
+]
+
